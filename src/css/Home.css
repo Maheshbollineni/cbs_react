@@ -1,0 +1,35 @@
+.welcome{
+    padding-top: 200px;
+    color: rgb(135, 27, 27);
+    font-size: xxx-large;
+}
+.login,.register{
+
+    margin: 40px;
+    width: 200px;
+    background-color: transparent;
+    border: 0;
+    font-size:larger;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.login:hover{
+   background-color: rgba(0,0,0,0.1);
+   border-radius: 20px;
+}
+.register:hover{
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 20px;
+ }
+.register::after{
+    color: white;
+}
+
+.home{
+    width: 100%;
+    background-image: url('../css/bank.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-bottom: 790px;
+    text-align: center;
+}

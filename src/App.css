@@ -1,0 +1,9 @@
+.header{
+  background-color: green;
+  color: white;
+  text-decoration: solid;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: 80px;
+}
