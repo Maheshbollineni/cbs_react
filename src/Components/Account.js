@@ -18,7 +18,7 @@ export default function Account(props) {
       }
   return (
     <div className='account'>
-      <h4>Account Number:{props.accno}</h4>
+      <h4>Account Number : {props.accno}</h4>
       <button onClick={getBal}>Get Balance</button>
       <p>{bal}</p>
       <Link to={{
