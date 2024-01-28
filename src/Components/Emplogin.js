@@ -1,13 +1,28 @@
-import React,{useState} from 'react'
+import React,{useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function Emplogin({onLogin}) {
-  const [username, setUsername] = useState('');
+export default function Emplogin({onEmpLogin}) {
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-  
-    const handleSubmit = (e) => {
+    const navigate=useNavigate();
+    const handleSubmit = async(e) => {
       e.preventDefault();
-      onLogin(username);
+      const response=await fetch('http://localhost:8080/emplogin',{
+        method: "post",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body:JSON.stringify({
+          empid:username,
+          password:password
+        })
+      }).then((response)=>{response.json()})
+      .then((data)=>{console.log(data)})
+      .catch((error)=>{setError(error)})
+      console.log(username+" login")
+      onEmpLogin(username);
+      navigate("/emp");
     };
   
     return (

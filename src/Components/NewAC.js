@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import Navbar from './Navbar';
 
 export default function NewAC() {
     const [formData, setFormData] = useState({
@@ -50,6 +51,7 @@ export default function NewAC() {
     
       return (
         <div>
+          <Navbar />
           {accno==null?(
 
         <form onSubmit={handleSubmit}>

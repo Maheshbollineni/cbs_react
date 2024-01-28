@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 
-export default function EmpRegister() {
+export default function EmpRegister({handleEmpLogin}) {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         empid: '',
@@ -53,7 +53,8 @@ export default function EmpRegister() {
           return alert("Something went wrong");
         }
         console.log(response.body);
-        navigate("/");   
+        handleEmpLogin(formData.empid);
+        navigate("/emplogin");   
       };
   return (
     <div className='form-container'>
