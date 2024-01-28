@@ -1,13 +1,28 @@
 import React, { useState } from 'react'
 import '../css/login.css';
+import { useNavigate } from 'react-router-dom';
 export default function UserLogin({onLogin}) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-  
-    const handleSubmit = (e) => {
+    const navigate=useNavigate()
+    const handleSubmit = async(e) => {
       e.preventDefault();
+      const response=await fetch('http://localhost:8080/login',{
+        method: "post",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body:JSON.stringify({
+          custid:username,
+          password:password
+        })
+      }).then((response)=>{response.json()})
+      .then((data)=>{console.log(data)})
+      .catch((error)=>{setError(error)})
+      console.log(username+"login")
       onLogin(username);
+      navigate("/");
     };
   
     return (

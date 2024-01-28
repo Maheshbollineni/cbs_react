@@ -1,0 +1,11 @@
+.account{
+    text-align: center;
+    background-color:teal;
+    opacity:1;
+    border: 0px solid black;
+    width:auto;
+    margin: 40px;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+}

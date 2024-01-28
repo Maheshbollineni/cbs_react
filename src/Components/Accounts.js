@@ -1,20 +1,38 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import Account from './Account';
 
 export default function Accounts(props) {
-    const[bal,setBal]=useState();
-    const getBal=()=>{
-
-    }
+    const[accounts,setAccounts]=useState([]);
+    useEffect(()=>{
+      console.log(props.custid);
+      const response= fetch("http://localhost:8080/getAccount",{
+        method:"post",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body:JSON.stringify({
+          custid:props.custid
+        })
+      })
+      .then((response)=>{console.log(response); return response.json();})
+      .then((data)=>{console.log(data); setAccounts(data);})
+      .catch((error)=>{console.log(error)})
+    },[]);
+    
   return (
-    <div>
-      <h2>
-        Account Details:
-      </h2>
-      <h4>Account Number:{props.accno}</h4>
-      <button onClick={getBal}>Get Balance</button>
-      <p>{bal}</p>
-      <NavLink to='/history'>View Transaction History</NavLink>
-    </div>
-  )
+
+    <>
+      {
+        accounts.map((data)=>{
+          return(
+            <div>
+              <Account accno={data}></Account>
+              </div>
+          );  
+            }
+        )
+    }
+    </>
+  );
 }
