@@ -4,6 +4,8 @@
   text-decoration: solid;
   padding-left: 10px;
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 0px;
   height: 80px;
+  font-size:40px;
+  font-weight: bold;
 }

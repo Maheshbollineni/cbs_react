@@ -9,7 +9,7 @@ export default function Dashboard(props) {
       Your accounts
      <div>
        <h2>
-         Accounts Details 
+         Account Details 
       </h2>
     </div>
       <Accounts custid={props.customerId}></Accounts>
