@@ -12,6 +12,8 @@ import ManageAccounts from './Components/ManageAccounts';
 import Monthlystatement from './Components/Monthlystatement';
 import NewAC from './Components/NewAC';
 import TransactionHistory from './Components/TransactionHistory';
+import EmpRegister from './Components/EmpRegister';
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(true)
   const [custid, setCustid] = useState("")
@@ -41,6 +43,8 @@ function App() {
         <Route path='/statement' element={<Monthlystatement/>}/>
         <Route path='/openAC' element={<NewAC/>}/>
         <Route path='/history' element={<TransactionHistory/>}/>
+        <Route path='/empregister' element={<EmpRegister/>}/> 
+        <Route path='/loginemp' element={<Emplogin/>}/>        
       </Routes>
       
     </div>
