@@ -8,7 +8,6 @@ export default function Home(props) {
     <div className='home'>
          {props.loggedIn ? (
         <div>
-          {/* <h1>Welcome, Customer {props.custid}</h1> */}
           <Dashboard customerId={props.custid} />
         </div>
       ) : (

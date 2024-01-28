@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Navbar from './Navbar'
+import Accounts from './Accounts';
 export default function Dashboard(props) {
   const[account,SetAccount]=useState([]);
 
@@ -7,8 +8,8 @@ export default function Dashboard(props) {
     <div>
       <Navbar></Navbar>
       <h1>Welcome Customer {props.customerid}</h1>
-      View your accounts
-      
+      Your accounts
+      <Accounts accno="123"></Accounts>
     </div>
   )
 }

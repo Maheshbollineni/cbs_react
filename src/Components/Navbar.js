@@ -5,8 +5,9 @@ export default function Navbar() {
   return (
     
       <nav className='navbar'>
-        <NavLink to='/openAC'>OpenAccount  |</NavLink>
-        <NavLink to='/accounts'>  Manage accounts | </NavLink>
+        <br></br>
+        <NavLink to='/openAC'>Open a new Account  |</NavLink>
+        <NavLink to='/accounts'>  Manage account | </NavLink>
         <NavLink to='/statement'>  Monthly Statement | </NavLink>
         <NavLink to='/interest'>  Quarterly Interest </NavLink>    
       </nav>
