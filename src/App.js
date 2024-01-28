@@ -38,7 +38,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home loggedIn={loggedIn} custid={custid}></Home>}/>
         <Route path="/Register" element={<UserRegister/>}/>
-        <Route path="/UserLogin" element={<UserLogin/>}/>
+        <Route path="/UserLogin" element={<UserLogin onLogin={handleLogin}/>}/>
         <Route path='/empregister' element={<EmpRegister/>}/> 
         <Route path='/emplogin' element={<Emplogin/>}/>
         <Route path='/employee' element={<Empdashboard/>}/>
