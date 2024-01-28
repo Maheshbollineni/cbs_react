@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export default function NewAC() {
     const [formData, setFormData] = useState({
@@ -12,7 +13,10 @@ export default function NewAC() {
         upiid: '',
         category: ''
       });
-    
+      
+      const [accno,setAccno]=useState(null);
+      const navigate=useNavigate();
+
       const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -21,12 +25,33 @@ export default function NewAC() {
         });
       };
     
-      const handleSubmit = (e) => {
+      const handleSubmit = async(e) => {
         e.preventDefault();
-        // Your form submission logic here
+        const response=await fetch('http://localhost:8080/openAC',{
+          method: "post",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            custid: formData.custid,
+            ifsccode: formData.ifsccode,
+            branch: formData.branch,
+            type: formData.type,
+            balance: formData.balance,
+            nominee1: formData.nominee1,
+            nominee2: formData.nominee2,
+            upiid: formData.upiid,
+            category: formData.category
+        })        
+        }).then((response)=>{console.log(response); return response.json();})
+        .then((data)=>{console.log(data); setAccno(data);})
+        .catch((error)=>{setAccno("Error creating account")});
       };
     
       return (
+        <div>
+          {accno==null?(
+
         <form onSubmit={handleSubmit}>
           <h1>Enter the following details</h1>
           <label htmlFor="custid">Customer ID:</label>
@@ -60,6 +85,13 @@ export default function NewAC() {
           <input type="text" id="category" name="category" value={formData.category} onChange={handleChange} /><br />
     
           <input type="submit" value="Submit" />
-        </form>
+        </form>):
+        (
+          <div>
+            <h2>{accno}</h2>
+          </div>
+        )
+}
+        </div>
       );
 }

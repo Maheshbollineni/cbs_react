@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import '../css/UserRegister.css'
+import { useNavigate } from 'react-router-dom';
 export default function UserRegister() {
     const [formData, setFormData] = useState({
         custid: '',
@@ -20,26 +21,63 @@ export default function UserRegister() {
         country: '',
         pin: ''
       });
+      
+      const navigate=useNavigate()
+      const[val,setVal]=useState(null);
 
       const handleChange = (e, field) => {
         const { value } = e.target;
         setFormData({ ...formData, [field]: value });
       };
 
-      const handleSubmit = (e) => {
+      const handleSubmit = async(e) => {
         e.preventDefault();
         console.log(formData);
-        const reponse=fetch('http://localhost:8080/register')
-        
+        const reponse=await fetch('http://localhost:8080/register',{
+          method: "post",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            custid: formData.custid,
+            password: formData.password,
+            firstname: formData.firstname,
+            middlename: formData.middlename,
+            lastname: formData.lastname,
+            mobileno: formData.mobileno,
+            emailid: formData.emailid,
+            dob: formData.dob,
+            fathername: formData.fathername,
+            mothername: formData.mothername,
+            pan: formData.pan,
+            aadhaarid: formData.aadhaarid,
+            address: formData.address,
+            city: formData.city,
+            state: formData.state,
+            country: formData.country,
+            pin: formData.pin
+        })        
+        }).then(function(response){
+          console.log(response)
+          return response.json()
+        }).then(function(data){
+          setVal(data);
+          console.log(data)
+        }).catch(function(error){
+          setVal("Error in registration")
+        })
+        navigate("/UserLogin")
       };
   return (
-    <div className='form-container'>
+    <div>
+    {val==null ? (
+      <div className='form-container'>
       <h1>Welcome</h1>
       <br></br>
       <h3>Register as a customer</h3>
       <br></br>
       <p>Fill in your details</p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} >
       <label>
         Cust ID:
         <input
@@ -178,5 +216,12 @@ export default function UserRegister() {
       <button type="submit">Submit</button>
     </form>
     </div>
-  )
+    ) : (
+      <div>
+      <h1>{val}</h1>
+      </div>
+    )
+  }
+    </div>
+  );
 }

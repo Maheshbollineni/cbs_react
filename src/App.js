@@ -1,5 +1,5 @@
 import './App.css';
-import { Routes,Route, NavLink } from 'react-router-dom';
+import { Routes,Route, NavLink, useNavigate } from 'react-router-dom';
 import Home from './Components/Home';
 import UserRegister from './Components/UserRegister';
 import UserLogin from './Components/UserLogin';
@@ -15,12 +15,15 @@ import TransactionHistory from './Components/TransactionHistory';
 import EmpRegister from './Components/EmpRegister';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true)
+  const [loggedIn, setLoggedIn] = useState(false)
   const [custid, setCustid] = useState("")
 
+  const navigate=useNavigate();
   const handleLogin = (customerId) => {
+    console.log(customerId+"app")
     setCustid(customerId);
     setLoggedIn(true);
+    navigate("/");
   };
 
   const handleLogout=()=>{
@@ -35,7 +38,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home loggedIn={loggedIn} custid={custid}></Home>}/>
         <Route path="/Register" element={<UserRegister/>}/>
-        <Route path="/UserLogin" element={<UserLogin/>}/>
+        <Route path="/UserLogin" element={<UserLogin onLogin={handleLogin}/>}/>
         <Route path='/empregister' element={<EmpRegister/>}/> 
         <Route path='/emplogin' element={<Emplogin/>}/>
         <Route path='/employee' element={<Empdashboard/>}/>

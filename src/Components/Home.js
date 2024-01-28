@@ -6,6 +6,7 @@ import Dashboard from './Dashboard';
 export default function Home(props) {
   return (
     <div className='home'>
+    
          {props.loggedIn ? (
         <div>
           <Dashboard customerId={props.custid} />
