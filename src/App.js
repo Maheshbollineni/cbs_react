@@ -16,9 +16,8 @@ import EmpRegister from './Components/EmpRegister';
 import NoMatch from './Components/NoMatch';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(true)
   const [custid, setCustid] = useState("")
-
   const navigate=useNavigate();
   const handleLogin = (customerId) => {
     console.log(customerId+"app")
@@ -50,7 +49,7 @@ function App() {
   return (
     <div className="App">
       <div className='header'>
-        <h1>Core Banking System</h1>
+        <NavLink className='header' to="/">Core Banking System</NavLink>
     </div>
       <Routes>
         <Route path="/" element={<Home loggedIn={loggedIn} custid={custid}></Home>}/>

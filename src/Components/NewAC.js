@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import '../css/newac.css';
 import Navbar from './Navbar';
 
 export default function NewAC() {
@@ -54,7 +55,7 @@ export default function NewAC() {
           <Navbar />
           {accno==null?(
 
-        <form onSubmit={handleSubmit}>
+        <form className='acform' onSubmit={handleSubmit}>
           <h1>Enter the following details</h1>
           <label htmlFor="custid">Customer ID:</label>
           <input type="text" id="custid" name="custid" value={formData.custid} onChange={handleChange} /><br />

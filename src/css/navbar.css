@@ -1,0 +1,12 @@
+nav{
+    background-color: rgb(0, 119, 255);
+    width: auto;
+    height: 60px;
+}
+.nl{
+    color: rgb(251, 255, 0);
+    margin-right:40px;
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 2px;
+}

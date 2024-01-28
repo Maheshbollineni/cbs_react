@@ -2,6 +2,7 @@ import '../css/Account.css'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 export default function Account(props) {
+  var acc=props.accno
     const[bal,setBal]=useState();
     const getBal=async()=>{
         const response=await fetch("http://localhost:8080/getBalance",{
@@ -17,12 +18,12 @@ export default function Account(props) {
       }
   return (
     <div className='account'>
-      <h4>Account Number:{props.accno}</h4>
+      <h4>Account Number : {props.accno}</h4>
       <button onClick={getBal}>Get Balance</button>
       <p>{bal}</p>
       <Link to={{
         pathname:'/history',
-        aboutProps:{accno:props.accno}
+        state:{accno:acc}
     }} >View Transaction History</Link>
     </div>
   )
