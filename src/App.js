@@ -36,15 +36,15 @@ function App() {
         <Route path="/" element={<Home loggedIn={loggedIn} custid={custid}></Home>}/>
         <Route path="/Register" element={<UserRegister/>}/>
         <Route path="/UserLogin" element={<UserLogin/>}/>
-        <Route path='/employee' element={<Empdashboard/>}/>
+        <Route path='/empregister' element={<EmpRegister/>}/> 
         <Route path='/emplogin' element={<Emplogin/>}/>
+        <Route path='/employee' element={<Empdashboard/>}/>
         <Route path='/qinterest' element={<Interest/>}/>
         <Route path='/myaccount' element={<ManageAccounts/>}/>
         <Route path='/statement' element={<Monthlystatement/>}/>
         <Route path='/openAC' element={<NewAC/>}/>
-        <Route path='/history' element={<TransactionHistory/>}/>
-        <Route path='/empregister' element={<EmpRegister/>}/> 
-        <Route path='/loginemp' element={<Emplogin/>}/>        
+        <Route path='/history' element={<TransactionHistory/>}/>     
+        
       </Routes>
       
     </div>
