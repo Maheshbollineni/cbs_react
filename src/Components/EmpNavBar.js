@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-
+import '../css/navbar.css';
 export default function EmpNavBar() {
   return (
     <nav className='navbar'>

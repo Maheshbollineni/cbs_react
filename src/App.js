@@ -64,8 +64,7 @@ function App() {
         <Route path='/empregister' element={<EmpRegister onEmpLogin = {handleEmpLogin}/>}/> 
         <Route path='/emplogin' element={<Emplogin onEmpLogin = {handleEmpLogin}/>}/>
         <Route path='/emp' element={<Empdashboard loggedIn={isEmpLoggedIn} empid = {empid}/>}/>
-        <Route path='/qinterest' element={<Interest/>}/>
-        <Route path='/myaccount' element={<ManageAccounts/>}/>
+        <Route path='/myaccounts' element={<ManageAccounts custid={custid}/>}/>
         <Route path='/statement' element={<Monthlystatement/>}/>
         <Route path='/openAC' element={<NewAC/>}/>
         <Route path='/history' element={<TransactionHistory/>}/>     

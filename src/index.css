@@ -15,6 +15,9 @@ code {
 .headerl.active{
   color: white;
 }
+.headerl:hover{
+  color:yellow;
+}
 a{
   color: black;
   padding: 5px;

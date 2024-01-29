@@ -5,12 +5,12 @@ export default function Dashboard(props) {
   return (
     <div>
       <Navbar></Navbar>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
       <h1>Welcome Customer {props.customerId}</h1>
-      Your accounts
      <div>
-       <h2>
-         Account Details 
-      </h2>
     </div>
       <Accounts custid={props.customerId}></Accounts>
     </div>
