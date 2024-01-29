@@ -74,7 +74,7 @@ export default function UserRegister() {
       <div className='form-container'>
       <h1>Welcome</h1>
       <br></br>
-      <h3>Register as a customer</h3>
+      <h3>Request for new account creation</h3>
       <br></br>
       <p>Fill in your details</p>
       <form onSubmit={handleSubmit} >

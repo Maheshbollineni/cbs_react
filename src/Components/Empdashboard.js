@@ -6,7 +6,9 @@ export default function Empdashboard(props) {
   return (
     <div>
       <EmpNavBar />
-      <h1>Employee Dashboard: {props.empid}</h1>
+      <br></br>
+      <br></br>
+      <h1>Employee Dashboard : {props.empid}</h1>
     </div>
   );
 }

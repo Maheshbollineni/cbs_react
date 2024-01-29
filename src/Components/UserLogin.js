@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import '../css/login.css';
 import { useNavigate } from 'react-router-dom';
+
+
+
 export default function UserLogin({onLogin}) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -30,7 +33,7 @@ export default function UserLogin({onLogin}) {
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>
           <div>
-            <label>Customer ID: </label>
+            <label>Customer ID  </label>
             <input
               type="text"
               value={username}
@@ -38,8 +41,9 @@ export default function UserLogin({onLogin}) {
             />
           </div>
           <div>
-            <label>Password: </label>
+            <label>Password   </label>
             <input
+            className='password'
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}

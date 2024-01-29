@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import Account from './individuals/Account';
+import React from 'react'
+import TransactionHistory from './individuals/TransactionHistory';
+import { useState,useEffect } from 'react';
 import Navbar from './Navbar';
-
-export default function Accounts(props) {
+export default function UserStatement(props) {
     const[accounts,setAccounts]=useState([]);
     useEffect(()=>{
       console.log(props.custid);
@@ -20,22 +19,22 @@ export default function Accounts(props) {
       .then((data)=>{console.log(data); setAccounts(data);})
       .catch((error)=>{console.log(error)})
     },[]);
-    
-  return (
-
+  
+    return (
+    <div>
+      <Navbar></Navbar>
     <>
-    <Navbar></Navbar>
       {
-        
         accounts.map((data)=>{
           return(
             <div>
-              <Account accno={data}></Account>
+              <TransactionHistory accno={data}></TransactionHistory>
               </div>
           );  
             }
         )
     }
     </>
-  );
+    </div>
+  )
 }

@@ -5,10 +5,10 @@ export default function EmpNavBar() {
   return (
     <nav className='navbar'>
         <br></br>
-        <NavLink to='/openAC'>Open a new Account  |</NavLink>
-        <NavLink to='/accounts'>  Manage account | </NavLink>
-        <NavLink to='/statement'>  Monthly Statement | </NavLink>
-        <NavLink to='/interest'>  Quarterly Interest </NavLink>  
+        <NavLink className='nl' to='/openAC'> Create Account    </NavLink>
+        <NavLink className='nl'  to='/editAcc'>  Edit account  </NavLink>
+        <NavLink className='nl'  to='/statement'>  Monthly Statements  </NavLink>
+        <NavLink className='nl'  to='/interest'> Interest </NavLink>  
       </nav>
   )
 }

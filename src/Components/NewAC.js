@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import '../css/newac.css';
 import Navbar from './Navbar';
+import EmpNavBar from './EmpNavBar';
 
 export default function NewAC() {
     const [formData, setFormData] = useState({
@@ -52,7 +53,7 @@ export default function NewAC() {
     
       return (
         <div>
-          <Navbar />
+          <EmpNavBar/>
           {accno==null?(
 
         <form className='acform' onSubmit={handleSubmit}>

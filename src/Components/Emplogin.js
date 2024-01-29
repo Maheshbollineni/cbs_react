@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../css/login.css';
 
 export default function Emplogin({onEmpLogin}) {
     const [username, setUsername] = useState('');
@@ -40,6 +41,7 @@ export default function Emplogin({onEmpLogin}) {
           <div>
             <label>Password: </label>
             <input
+            className='password'
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
