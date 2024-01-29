@@ -42,6 +42,11 @@ function App() {
     navigate("/emp");
   };
 
+  const logout=()=>{
+    setCustid(null);
+    setLoggedIn(false);
+  }
+
   const handleEmpLogout=()=>{
     setEmpLoggedIn(false);
     setEmpid(null);
@@ -50,6 +55,7 @@ function App() {
     <div className="App">
       <div className='header'>
         <NavLink className='headerl' to="/">Core Banking System</NavLink>
+        {loggedIn==true && <button className="logout" onClick={logout}>Logout</button>}
     </div>
       <Routes>
         <Route path="/" element={<Home loggedIn={loggedIn} custid={custid}></Home>}/>

@@ -1,7 +1,7 @@
 .account{
     text-align: center;
     background-color:teal;
-    opacity:1;
+    opacity:0.75;
     border: 0px solid black;
     width:auto;
     margin: 40px;
@@ -9,7 +9,7 @@
     color: rgb(255, 255, 255);
     padding: 10px;
 }
-button{
+.bal{
     background-color: yellow;
     color: black;
     padding: 10px 20px;
@@ -17,9 +17,9 @@ button{
     border-radius: 4px;
     cursor: pointer;
 }
-button:hover{
+.bal:hover{
     background-color: rgba(217, 255, 0, 0.833);
 }
-button:focus{
+.bal:focus{
     outline: none;
 }

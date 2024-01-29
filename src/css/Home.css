@@ -6,24 +6,21 @@
 .login,.register{
 
     margin: 40px;
-    width: 200px;
+    width: 400px;
     background-color: transparent;
     border: 0;
     font-size:larger;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 .login:hover{
-   background-color: rgba(255, 255, 255, 0.1);
-   border-radius: 20px;
+   background-color: rgba(0,0,0,0.1);
+   border-radius: 4px;
 }
 .register:hover{
     background-color: rgba(0,0,0,0.1);
     border-radius: 20px;
  }
-.register::after{
-    color: white;
-}
 
 .home{
     width: 100%;

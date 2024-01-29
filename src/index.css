@@ -21,10 +21,10 @@ a{
 }
 
 a:hover{
-  color: rgb(47, 0, 255);
+  color: yellow
 }
 
 
 a.active{
-  color: dodgerblue;
+  color: rgb(255, 255, 255);
 }

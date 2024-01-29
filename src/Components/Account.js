@@ -20,7 +20,7 @@ export default function Account(props) {
   return (
     <div className='account'>
       <h4>Account Number : {props.accno}</h4>
-      <button onClick={getBal}>Get Balance</button>
+      <button className="bal" onClick={getBal}>Get Balance</button>
       <p>{bal}</p>
       {/* <Link to={{
         pathname:'/history',
