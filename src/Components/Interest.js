@@ -18,7 +18,7 @@ export default function Interest() {
     <div>
       <EmpNavBar></EmpNavBar>
       <button className='btn' onClick={calcInt}>Generate Quarterly Interest For all Accounts</button>
-      <p>{val}</p>
+      <h4>{val}</h4>
     </div>
   )
 }

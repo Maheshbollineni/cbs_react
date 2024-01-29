@@ -11,11 +11,13 @@ export default function Manage({accno}) {
                 'Content-Type': 'application/json'
             },
             body:accno
-        }).then((response)=>{return response.json()}).then((data)=>setRes(data)).catch((error)=>console.log(error))
+        }).then((response)=>{return response.json()}).then((data)=>{console.log(data);setRes(data)}).catch((error)=>console.log(error))
     }
 
     
   return (
+    <>
+   
     <div className='managecard'>
         <h3>Account number - {accno}</h3>
         <button onClick={closeAcc}>Close Account</button>
@@ -23,5 +25,6 @@ export default function Manage({accno}) {
         <button onClick={transact}>Withdraw Money</button> */}
         <h1>{res}</h1>
     </div>
+    </>
   )
 }
