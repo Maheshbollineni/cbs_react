@@ -12,7 +12,9 @@ code {
     monospace;
 }
 
-
+.headerl.active{
+  color: white;
+}
 a{
   color: black;
   padding: 5px;
@@ -21,6 +23,7 @@ a{
 a:hover{
   color: rgb(47, 0, 255);
 }
+
 
 a.active{
   color: dodgerblue;

@@ -49,7 +49,7 @@ function App() {
   return (
     <div className="App">
       <div className='header'>
-        <NavLink className='header' to="/">Core Banking System</NavLink>
+        <NavLink className='headerl' to="/">Core Banking System</NavLink>
     </div>
       <Routes>
         <Route path="/" element={<Home loggedIn={loggedIn} custid={custid}></Home>}/>
