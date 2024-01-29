@@ -14,6 +14,7 @@ import NewAC from './Components/NewAC';
 import TransactionHistory from './Components/TransactionHistory';
 import EmpRegister from './Components/EmpRegister';
 import NoMatch from './Components/NoMatch';
+import EmpHome from './Components/EmpHome';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -45,6 +46,8 @@ function App() {
   const logout=()=>{
     setCustid(null);
     setLoggedIn(false);
+    setEmpLoggedIn(false);
+    setEmpid(null);
   }
 
   const handleEmpLogout=()=>{
@@ -56,6 +59,7 @@ function App() {
       <div className='header'>
         <NavLink className='headerl' to="/">Core Banking System</NavLink>
         {loggedIn==true && <button className="logout" onClick={logout}>Logout</button>}
+        {isEmpLoggedIn==true && <button className="logout" onClick={logout}>Logout</button>}
     </div>
       <Routes>
         <Route path="/" element={<Home loggedIn={loggedIn} custid={custid}></Home>}/>
@@ -63,7 +67,7 @@ function App() {
         <Route path="/UserLogin" element={<UserLogin onLogin={handleLogin}/>}/>
         <Route path='/empregister' element={<EmpRegister onEmpLogin = {handleEmpLogin}/>}/> 
         <Route path='/emplogin' element={<Emplogin onEmpLogin = {handleEmpLogin}/>}/>
-        <Route path='/emp' element={<Empdashboard loggedIn={isEmpLoggedIn} empid = {empid}/>}/>
+        <Route path='/emp' element={<EmpHome isEmpLoggedIn={isEmpLoggedIn} empid = {empid}/>}/>
         <Route path='/myaccounts' element={<ManageAccounts custid={custid}/>}/>
         <Route path='/statement' element={<Monthlystatement/>}/>
         <Route path='/openAC' element={<NewAC/>}/>
