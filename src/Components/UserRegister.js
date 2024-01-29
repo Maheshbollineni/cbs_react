@@ -129,7 +129,7 @@ export default function UserRegister() {
       <label>
         Email ID:
         <input
-          type="text"
+          type="email"
           value={formData.emailid}
           onChange={(e) => handleChange(e, 'emailid')}
         />
