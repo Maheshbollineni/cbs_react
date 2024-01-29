@@ -2,9 +2,10 @@ import React from 'react'
 import { useLocation } from 'react-router-dom/dist';
 import { useState } from 'react'
 import '../css/TransactionHistory.css';
+import EmpNavBar from './EmpNavBar';
 export default function Monthlystatement() {
-  const location=useLocation();
-  const accno = location.state?.accno || 'No accno provided';
+
+  const [accno,setAccno]=useState();
   const [mn,setmn]=useState();
   const [transactions,setTransactions] = useState([]);
   console.log("http://localhost:8080/monthly/?month="+{mn}+"&accountno="+{accno});
@@ -33,8 +34,14 @@ export default function Monthlystatement() {
     getTransactions();
   }
   return (
-    <div>
-      <label for="monthSelect">Select a Month:</label>
+    <div >
+      <EmpNavBar></EmpNavBar>
+      <div className='ms'>
+      <br></br>
+      <label for="accno">Enter Account number </label>
+      <input id="accno" className="accno" value={accno} onChange={(e)=>setAccno(e.target.value)} type="text"></input>
+      <br></br> <br></br>
+      <label for="monthSelect">Select a Month: </label>
     <select id="monthSelect" onChange={(e)=>{console.log(e.target.value);setmn(parseInt(e.target.value, 10))}}>
         <option value="1">January</option>
         <option value="2">February</option>
@@ -49,8 +56,10 @@ export default function Monthlystatement() {
         <option value="11">November</option>
         <option value="12">December</option>
     </select>
+    <br></br><br></br>
     <button onClick={submitMonth}>Submit</button>
-    <p>Statement for account no: {accno}</p>
+    </div>
+    {(transactions==null)?<p>Statement for account no: {accno}</p>:<p></p>}
       {console.log(transactions)}
       {/* <p>{transactions.map((transaction)=>console.log(transaction))}</p> */}
       <table className='transaction-table'>
