@@ -5,7 +5,7 @@ export default function Interest() {
   const[val,setVal]=useState("");
 
   const calcInt =async()=>{
-    const response= await fetch('http://localhost:8080/calInterest',{
+    const response= await fetch('http://localhost:8080/calcinterest',{
       method:"post",
       headers: {
         'Content-Type': 'application/json'
