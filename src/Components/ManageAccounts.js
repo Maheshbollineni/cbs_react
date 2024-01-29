@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import Navbar from './Navbar'
 import { useState } from 'react';
-import Manage from './Manage';
+import Manage from './individuals/Manage';
+import EmpNavBar from './EmpNavBar';
 export default function ManageAccounts(props) {
 
   const [accounts,setAccounts]=useState([]);
@@ -23,7 +24,7 @@ export default function ManageAccounts(props) {
 
   return (
     <div>
-      <Navbar/>
+      <EmpNavBar/>
       <>
       {
         accounts.map((data)=>{

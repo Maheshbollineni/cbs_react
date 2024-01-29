@@ -11,11 +11,12 @@ import Interest from './Components/Interest';
 import ManageAccounts from './Components/ManageAccounts';
 import Monthlystatement from './Components/Monthlystatement';
 import NewAC from './Components/NewAC';
-import TransactionHistory from './Components/TransactionHistory';
+import TransactionHistory from './Components/individuals/TransactionHistory';
 import EmpRegister from './Components/EmpRegister';
 import NoMatch from './Components/NoMatch';
 import EmpHome from './Components/EmpHome';
-
+import Accounts from './Components/Accounts';
+import UserStatement from './Components/UserStatement';
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [custid, setCustid] = useState("")
@@ -58,20 +59,25 @@ function App() {
     <div className="App">
       <div className='header'>
         <NavLink className='headerl' to="/">Core Banking System</NavLink>
-        {loggedIn==true && <button className="logout" onClick={logout}>Logout</button>}
-        {isEmpLoggedIn==true && <button className="logout" onClick={logout}>Logout</button>}
+        {loggedIn==true && <button className="logout" onClick={logout}>Logout <br></br>{custid}</button>}
+        {isEmpLoggedIn==true && <button className="logout" onClick={logout}>Logout <br></br>{empid}</button>}
     </div>
       <Routes>
+        
+        {/* User */}
         <Route path="/" element={<Home loggedIn={loggedIn} custid={custid}></Home>}/>
         <Route path="/Register" element={<UserRegister/>}/>
         <Route path="/UserLogin" element={<UserLogin onLogin={handleLogin}/>}/>
+        <Route path='/accounts' element={<Accounts custid={custid}/>}/>
+        <Route path='/history' element={<UserStatement custid={custid}/>}/>     
+        
         <Route path='/empregister' element={<EmpRegister onEmpLogin = {handleEmpLogin}/>}/> 
         <Route path='/emplogin' element={<Emplogin onEmpLogin = {handleEmpLogin}/>}/>
         <Route path='/emp' element={<EmpHome isEmpLoggedIn={isEmpLoggedIn} empid = {empid}/>}/>
-        <Route path='/myaccounts' element={<ManageAccounts custid={custid}/>}/>
-        <Route path='/statement' element={<Monthlystatement/>}/>
         <Route path='/openAC' element={<NewAC/>}/>
-        <Route path='/history' element={<TransactionHistory/>}/>     
+        <Route path='/editAcc' element={<ManageAccounts/>}/>
+        <Route path='/statement' element={<Monthlystatement/>}/>
+        <Route path='/interest' element={<Interest/>}/>
         <Route path="*" element={<NoMatch />}></Route>
       </Routes>
       

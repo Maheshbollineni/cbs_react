@@ -12,7 +12,6 @@ export default function Dashboard(props) {
       <h1>Welcome Customer {props.customerId}</h1>
      <div>
     </div>
-      <Accounts custid={props.customerId}></Accounts>
     </div>
   )
 }

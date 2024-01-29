@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import '../css/manage.css'
-import DeporWdraw from './DeporWdraw';
+import '../../css/manage.css'
+import DeporWdraw from '../DeporWdraw';
 export default function Manage({accno}) {
 
     const [res,setRes]=useState("");

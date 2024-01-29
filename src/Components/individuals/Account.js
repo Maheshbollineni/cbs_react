@@ -1,6 +1,8 @@
-import '../css/Account.css'
+
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import '../../css/Account.css';
+
 
 export default function Account(props) {
   var acc=props.accno
@@ -22,13 +24,9 @@ export default function Account(props) {
       <h4>Account Number : {props.accno}</h4>
       <button className="bal" onClick={getBal}>Get Balance</button>
       <p>{bal}</p>
-      {/* <Link to={{
-        pathname:'/history',
-        state:{accno:acc}
-    }} >View Transaction History</Link> */}
-        <Link to='/history' state={{accno:props.accno}} >
+        {/* <Link to='/history' state={{accno:props.accno}} >
           View Transaction History
-        </Link>
+        </Link> */}
     </div>
   )
 }
