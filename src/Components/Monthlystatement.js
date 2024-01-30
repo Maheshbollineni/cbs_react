@@ -6,11 +6,10 @@ import EmpNavBar from './EmpNavBar';
 export default function Monthlystatement() {
 
   const [accno,setAccno]=useState();
-  const[accno,setaccno]=useState();
   const [mn,setmn]=useState();
   const [transactions,setTransactions] = useState([]);
   const handlechange=(event)=>{
-    setaccno(event.target.value);
+    setAccno(event.target.value);
   }
   console.log("http://localhost:8080/monthly/?month="+{mn}+"&accountno="+{accno});
   const getTransactions = async () => {
@@ -43,14 +42,9 @@ export default function Monthlystatement() {
       <div className='ms'>
       <br></br>
       <label for="accno">Enter Account number </label>
-      <input id="accno" className="accno" value={accno} onChange={(e)=>setAccno(e.target.value)} type="text"></input>
+      <input type="number" className="accno" value={accno} onChange={handlechange} />
       <br></br> <br></br>
-      <label for="monthSelect">Select a Month: </label>
-    <div>
-      <label>Enter Account Number</label>
-      <input type="text" onChange={handlechange} />
-      
-      <br/>
+
       <label for="monthSelect">Select a Month:</label>
     <select id="monthSelect" onChange={(e)=>{console.log(e.target.value);setmn(parseInt(e.target.value, 10))}}>
         <option value="1">January</option>
@@ -68,8 +62,8 @@ export default function Monthlystatement() {
     </select>
     <br></br><br></br>
     <button onClick={submitMonth}>Submit</button>
-    </div>
-    {(transactions==null)?<p>Statement for account no: {accno}</p>:<p></p>}
+    
+      {(transactions==null)?<p>Statement for account no: {accno}</p>:<p></p>}
       {console.log(transactions)}
       {/* <p>{transactions.map((transaction)=>console.log(transaction))}</p> */}
       <table className='transaction-table'>
@@ -93,7 +87,7 @@ export default function Monthlystatement() {
         ))}
       </tbody>
     </table>
-    
+      </div>
     </div>
   )
 }
