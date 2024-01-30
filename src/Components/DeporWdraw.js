@@ -1,74 +1,37 @@
 import React from 'react'
 import { useState } from 'react';
 import EmpNavbar from './EmpNavBar';
+import Transfer from './Transfer';
+import Deposit from './Deposit';
+import Withdraw from './Withdraw';
 
 export default function DeporWdraw() {
     const [res,setRes]=useState("");
-    const[rec,setRec]=useState();
-    const[sender,setSender]=useState();
-    const[amt,setAmt]=useState();
-    const handleSubmit= async(e)=>{
-      e.preventDefault();
-      const response =await fetch('http://localhost:8080/transfer',{
-        method:"post",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body:JSON.stringify({
-          sender_accountno:sender,
-          receiver_accountno:rec,
-          amount:amt
-        })
-      }).then((response)=>{console.log(response); return response.json();})
-      .then((data)=>{console.log(data); setRes(data);})
-      .catch((error)=>{console.log(error)})
-    }
+    const[opt,setOpt]=useState("t");
+    
   return (
     <div>
       <EmpNavbar />
-      <form className='transfer' onSubmit={handleSubmit}>
-        <br></br><br></br>
-
-        <h1>Send money to another account</h1>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <label for="send">Enter Your Account Number </label>
-              </td>
-              <td>
-                <input type='number' id="send" className='send' value={sender} onChange={(e)=>{setSender(e.target.value)}}></input>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="rec">Enter Reciever Account Number </label>
-              </td>
-              <td>
-                <input type='number' id="rec" className='rec' value={rec} onChange={(e)=>{setRec(e.target.value)}}></input>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="amt">Enter amount </label>
-              </td>
-              <td>
-                <input type='number' id="amt" className='amt' value={amt} onChange={(e)=>{setAmt(e.target.value)}}></input>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <button type='submit'>Initiate Transaction</button>
-              </td>              
-            </tr>
-          </tbody>
-        </table>
-        
-        <br></br>
-      <br></br>
-        <br></br>
-        
+      <form className='option'>
+        <h5>Select Type of Transaction</h5>
+        <select value={opt} onChange={(e)=>{console.log(e.target.value);setOpt(e.target.value)}}>
+          <option value="t">Transfer</option>
+          <option value="d">Deposit</option>
+          <option value="w">Withdraw</option>
+        </select>
       </form>
+    
+        {(opt=="t") && 
+         <Transfer></Transfer>
+        }
+        {(opt=="d")&&
+        <Deposit></Deposit>
+        }
+        {
+          (opt=="w")&&
+          <Withdraw></Withdraw>
+        }
+        
       <p>{res}</p>
     </div>
   )
