@@ -3,10 +3,12 @@ import { useLocation } from 'react-router-dom/dist';
 import { useState } from 'react'
 import '../css/TransactionHistory.css';
 export default function Monthlystatement() {
-  const location=useLocation();
-  const accno = location.state?.accno || 'No accno provided';
+  const[accno,setaccno]=useState();
   const [mn,setmn]=useState();
   const [transactions,setTransactions] = useState([]);
+  const handlechange=(event)=>{
+    setaccno(event.target.value);
+  }
   console.log("http://localhost:8080/monthly/?month="+{mn}+"&accountno="+{accno});
   const getTransactions = async () => {
     try {
@@ -34,6 +36,10 @@ export default function Monthlystatement() {
   }
   return (
     <div>
+      <label>Enter Account Number</label>
+      <input type="text" onChange={handlechange} />
+      
+      <br/>
       <label for="monthSelect">Select a Month:</label>
     <select id="monthSelect" onChange={(e)=>{console.log(e.target.value);setmn(parseInt(e.target.value, 10))}}>
         <option value="1">January</option>
