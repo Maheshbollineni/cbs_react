@@ -1,12 +1,14 @@
 import React from 'react'
 import { useState } from 'react';
+import Navbar from './Navbar';
 
 export default function DeporWdraw() {
     const [res,setRes]=useState("");
     const[rec,setRec]=useState();
     const[sender,setSender]=useState();
     const[amt,setAmt]=useState();
-    const send= async()=>{
+    const handleSubmit= async(e)=>{
+      e.preventDefault();
       const response =await fetch('http://localhost:8080/transfer',{
         method:"post",
         headers: {
@@ -23,7 +25,8 @@ export default function DeporWdraw() {
     }
   return (
     <div>
-      <form className='transfer'>
+      <Navbar />
+      <form className='transfer' onSubmit={handleSubmit}>
         <br></br><br></br>
         <h1>Send money to another account</h1>
         
@@ -36,7 +39,7 @@ export default function DeporWdraw() {
         <label for="amt">Enter amount </label>
         <input type='number' id="amt" className='amt' value={amt} onChange={(e)=>{setAmt(e.target.value)}}></input>
         <br></br>
-        <button onClick={send}>Initiate Transaction</button>
+        <button type='submit'>Initiate Transaction</button>
       </form>
       <h3>{res}</h3>
     </div>
