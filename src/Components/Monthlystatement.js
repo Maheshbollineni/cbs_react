@@ -6,7 +6,7 @@ import EmpNavBar from './EmpNavBar';
 export default function Monthlystatement() {
 
   const [accno,setAccno]=useState();
-  const [mn,setmn]=useState();
+  const [mn,setmn]=useState(1);
   const [transactions,setTransactions] = useState([]);
   const handlechange=(event)=>{
     setAccno(event.target.value);
