@@ -13,10 +13,15 @@ export default function EmpHome(props) {
         </div>
       ) : (
         <div>
+        <div>
       <h1 className='welcome'>CBS Employee Portal</h1>
       <NavLink className='login' to='/emplogin'>Login</NavLink>
       <NavLink className='register' to='/empregister'>Register</NavLink>
     </div>  
+    <div>
+        <NavLink className='login' to='/'>Login as Customer</NavLink>
+    </div>
+    </div>
       )}
       </div>
   )

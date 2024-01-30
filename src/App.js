@@ -55,14 +55,15 @@ function App() {
   const handleEmpLogout=()=>{
     setEmpLoggedIn(false);
     setEmpid(null);
+    navigate("/emp");
   }
   return (
     <div className="App">
       <div className='header'>
         <NavLink className='headerl' to="/">Core Banking System</NavLink>
-        {isEmpLoggedIn==false && <NavLink className='loginemp' to='/emplogin'>Login as Employee</NavLink>}
+        {/* {isEmpLoggedIn==false && <NavLink className='loginemp' to='/emp'>Login as Employee</NavLink>} */}
         {loggedIn==true && <button className="logout" onClick={logout}>Logout <br></br>{custid}</button>}
-        {isEmpLoggedIn==true && <button className="logout" onClick={logout}>Logout <br></br>{empid}</button>}
+        {isEmpLoggedIn==true && <button className="logout" onClick={handleEmpLogout}>Logout <br></br>{empid}</button>}
     </div>
       <Routes>
         

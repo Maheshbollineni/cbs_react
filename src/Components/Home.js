@@ -13,10 +13,16 @@ export default function Home(props) {
         </div>
       ) : (
         <div>
+          <div>
       <h1 className='welcome'>Welcome to CBS</h1>
       <NavLink className='login' to='/UserLogin'>Login</NavLink>
-      <NavLink className='register' to='/Register'>Request New Account</NavLink>
-    </div>  
+      <NavLink className='register' to='/Register'>Request New Account</NavLink>     
+      
+    </div> 
+    <div>
+    <NavLink className='login' to='/emp'>Login as Employee</NavLink>
+    </div> 
+    </div>
       )}
       </div>
   );
