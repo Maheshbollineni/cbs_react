@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import Navbar from './Navbar';
+import EmpNavbar from './EmpNavBar';
 
 export default function DeporWdraw() {
     const [res,setRes]=useState("");
@@ -25,7 +25,7 @@ export default function DeporWdraw() {
     }
   return (
     <div>
-      <Navbar />
+      <EmpNavbar />
       <form className='transfer' onSubmit={handleSubmit}>
         <br></br><br></br>
 
