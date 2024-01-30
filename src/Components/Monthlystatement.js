@@ -41,39 +41,70 @@ export default function Monthlystatement() {
       <EmpNavBar></EmpNavBar>
       <div className='ms'>
       <br></br>
-      <label for="accno">Enter Account number </label>
-      <input type="number" className="accno" value={accno} onChange={handlechange} />
+      <table className='input-table'>
+        <tbody>
+          <tr>
+            <td>
+            < label for="accno">Account No. : </label>
+            </td>
+            <td>
+              <input type="number" className="accno" value={accno} onChange={handlechange} />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="monthSelect">Month : </label>
+            </td>
+            <td>
+              <select id="monthSelect" onChange={(e)=>{console.log(e.target.value);setmn(parseInt(e.target.value, 10))}}>
+                  <option value="1">January</option>
+                  <option value="2">February</option>
+                  <option value="3">March</option>
+                  <option value="4">April</option>
+                  <option value="5">May</option>
+                  <option value="6">June</option>
+                  <option value="7">July</option>
+                  <option value="8">August</option>
+                  <option value="9">September</option>
+                  <option value="10">October</option>
+                  <option value="11">November</option>
+                  <option value="12">December</option>
+              </select>                          
+            </td>
+          </tr> 
+          <tr>
+            <td>  
+              <button onClick={submitMonth}>Submit</button>  
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      
       <br></br> <br></br>
 
-      <label for="monthSelect">Select a Month:</label>
-    <select id="monthSelect" onChange={(e)=>{console.log(e.target.value);setmn(parseInt(e.target.value, 10))}}>
-        <option value="1">January</option>
-        <option value="2">February</option>
-        <option value="3">March</option>
-        <option value="4">April</option>
-        <option value="5">May</option>
-        <option value="6">June</option>
-        <option value="7">July</option>
-        <option value="8">August</option>
-        <option value="9">September</option>
-        <option value="10">October</option>
-        <option value="11">November</option>
-        <option value="12">December</option>
-    </select>
-    <br></br><br></br>
-    <button onClick={submitMonth}>Submit</button>
-    
-      {(transactions==null)?<p>Statement for account no: {accno}</p>:<p></p>}
+      
+      <div>
+      {(transactions==null || transactions.length===0)?<p>No Transactions Found</p>:<p>Statement for account no: {accno}</p>}
+      </div>
+      
       {console.log(transactions)}
       {/* <p>{transactions.map((transaction)=>console.log(transaction))}</p> */}
       <table className='transaction-table'>
       <thead>
         <tr>
-          {/* Use Object.keys() to get the field names from the first transaction object */}
-          {transactions.length > 0 &&
-            Object.keys(transactions[0]).map((field) => (
-              <th key={field}>{field}</th>
-            ))}
+          <th>ID</th>
+          <th>Transaction Ref. No.</th>
+          <th>Account No.</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Balance</th>
+          <th>Transaction Date</th>
+          <th>From Account</th>
+          <th>To Account</th>
+          <th>Mode</th>
+          <th>Status</th>
+          <th>Interest</th>
         </tr>
       </thead>
       <tbody>

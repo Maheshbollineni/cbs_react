@@ -48,8 +48,7 @@ function App() {
   const logout=()=>{
     setCustid(null);
     setLoggedIn(false);
-    setEmpLoggedIn(false);
-    setEmpid(null);
+    navigate("/")
   }
 
   const handleEmpLogout=()=>{

@@ -57,7 +57,7 @@ export default function NewAC() {
           {accno==null?(
 
         <form className='acform' onSubmit={handleSubmit}>
-          <h1>Enter the following details</h1>
+          
           <label htmlFor="custid">Customer ID:</label>
           <input type="text" id="custid" name="custid" value={formData.custid} onChange={handleChange} /><br />
     

@@ -14,9 +14,8 @@ export default function Home(props) {
       ) : (
         <div>
           <div>
-      <h1 className='welcome'>Welcome to CBS</h1>
-      <NavLink className='login' to='/UserLogin'>Login</NavLink>
-      <NavLink className='register' to='/Register'>Request New Account</NavLink>     
+      <h1 className='welcome'>CBS Customer Portal</h1>
+      <NavLink className='login' to='/UserLogin'>Login</NavLink>     
       
     </div> 
     <div>

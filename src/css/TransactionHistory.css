@@ -24,3 +24,8 @@
   .filter-input{
     margin-left: 50px;
   }
+
+  .input-table{
+    padding: 8px;
+    text-align: left;
+  }

@@ -28,20 +28,48 @@ export default function DeporWdraw() {
       <Navbar />
       <form className='transfer' onSubmit={handleSubmit}>
         <br></br><br></br>
+
         <h1>Send money to another account</h1>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <label for="send">Enter Your Account Number </label>
+              </td>
+              <td>
+                <input type='number' id="send" className='send' value={sender} onChange={(e)=>{setSender(e.target.value)}}></input>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="rec">Enter Reciever Account Number </label>
+              </td>
+              <td>
+                <input type='number' id="rec" className='rec' value={rec} onChange={(e)=>{setRec(e.target.value)}}></input>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="amt">Enter amount </label>
+              </td>
+              <td>
+                <input type='number' id="amt" className='amt' value={amt} onChange={(e)=>{setAmt(e.target.value)}}></input>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button type='submit'>Initiate Transaction</button>
+              </td>              
+            </tr>
+          </tbody>
+        </table>
         
-        < label for="send">Enter Your Account Number </label>
-        <input type='number' id="send" className='send' value={sender} onChange={(e)=>{setSender(e.target.value)}}></input>
         <br></br>
-      < label for="rec">Enter Reciever Account Number </label>
-        <input type='number' id="rec" className='rec' value={rec} onChange={(e)=>{setRec(e.target.value)}}></input>
+      <br></br>
         <br></br>
-        <label for="amt">Enter amount </label>
-        <input type='number' id="amt" className='amt' value={amt} onChange={(e)=>{setAmt(e.target.value)}}></input>
-        <br></br>
-        <button type='submit'>Initiate Transaction</button>
+        
       </form>
-      <h3>{res}</h3>
+      <p>{res}</p>
     </div>
   )
 }

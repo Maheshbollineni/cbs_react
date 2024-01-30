@@ -19,7 +19,12 @@ export default function Manage({accno}) {
     <>
    
     <div className='managecard'>
-        <h3>Account number - {accno}</h3>
+        <h3>Account Number - {accno}</h3>
+        <label> Reason For Closure : 
+            <input type='text'/>
+        </label>
+        <br></br>
+        <p></p>
         <button onClick={closeAcc}>Close Account</button>
         {/* <button onClick={transact}>Deposit Money</button>
         <button onClick={transact}>Withdraw Money</button> */}

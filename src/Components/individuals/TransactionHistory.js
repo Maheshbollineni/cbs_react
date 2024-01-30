@@ -48,11 +48,18 @@ export default function TransactionHistory(props) {
       <table className='transaction-table'>
       <thead>
         <tr>
-          {/* Use Object.keys() to get the field names from the first transaction object */}
-          {transactions.length > 0 &&
-            Object.keys(transactions[0]).map((field) => (
-              <th key={field}>{field}</th>
-            ))}
+          <th>ID</th>
+          <th>Transaction Ref. No.</th>
+          <th>Account No.</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Balance</th>
+          <th>Transaction Date</th>
+          <th>From Account</th>
+          <th>To Account</th>
+          <th>Mode</th>
+          <th>Status</th>
+          <th>Interest</th>
         </tr>
       </thead>
       <tbody>
