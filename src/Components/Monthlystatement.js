@@ -2,7 +2,10 @@ import React from 'react'
 import { useLocation } from 'react-router-dom/dist';
 import { useState } from 'react'
 import '../css/TransactionHistory.css';
+import EmpNavBar from './EmpNavBar';
 export default function Monthlystatement() {
+
+  const [accno,setAccno]=useState();
   const[accno,setaccno]=useState();
   const [mn,setmn]=useState();
   const [transactions,setTransactions] = useState([]);
@@ -35,6 +38,14 @@ export default function Monthlystatement() {
     getTransactions();
   }
   return (
+    <div >
+      <EmpNavBar></EmpNavBar>
+      <div className='ms'>
+      <br></br>
+      <label for="accno">Enter Account number </label>
+      <input id="accno" className="accno" value={accno} onChange={(e)=>setAccno(e.target.value)} type="text"></input>
+      <br></br> <br></br>
+      <label for="monthSelect">Select a Month: </label>
     <div>
       <label>Enter Account Number</label>
       <input type="text" onChange={handlechange} />
@@ -55,8 +66,10 @@ export default function Monthlystatement() {
         <option value="11">November</option>
         <option value="12">December</option>
     </select>
+    <br></br><br></br>
     <button onClick={submitMonth}>Submit</button>
-    <p>Statement for account no: {accno}</p>
+    </div>
+    {(transactions==null)?<p>Statement for account no: {accno}</p>:<p></p>}
       {console.log(transactions)}
       {/* <p>{transactions.map((transaction)=>console.log(transaction))}</p> */}
       <table className='transaction-table'>

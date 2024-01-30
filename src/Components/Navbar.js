@@ -8,7 +8,7 @@ export default function Navbar(props) {
         <br></br>      
         <NavLink className='nl' to='/accounts'>  Account  </NavLink>
         <NavLink className='nl' to='/history'> Statement  </NavLink>
-        <NavLink className='nl' to='*'> Transfers  </NavLink>
+        <NavLink className='nl' to='/transfers'> Transfers  </NavLink>
         <NavLink className='nl' to='*'> BillPay  </NavLink>
         <NavLink className='nl' to='*'> Loan  </NavLink>
         <NavLink className='nl' to='*'> Get Card  </NavLink>

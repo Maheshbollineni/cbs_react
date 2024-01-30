@@ -17,6 +17,7 @@ import NoMatch from './Components/NoMatch';
 import EmpHome from './Components/EmpHome';
 import Accounts from './Components/Accounts';
 import UserStatement from './Components/UserStatement';
+import DeporWdraw from './Components/DeporWdraw';
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [custid, setCustid] = useState("")
@@ -59,6 +60,7 @@ function App() {
     <div className="App">
       <div className='header'>
         <NavLink className='headerl' to="/">Core Banking System</NavLink>
+        {isEmpLoggedIn==false && <NavLink className='loginemp' to='/emplogin'>Login as Employee</NavLink>}
         {loggedIn==true && <button className="logout" onClick={logout}>Logout <br></br>{custid}</button>}
         {isEmpLoggedIn==true && <button className="logout" onClick={logout}>Logout <br></br>{empid}</button>}
     </div>
@@ -70,7 +72,8 @@ function App() {
         <Route path="/UserLogin" element={<UserLogin onLogin={handleLogin}/>}/>
         <Route path='/accounts' element={<Accounts custid={custid}/>}/>
         <Route path='/history' element={<UserStatement custid={custid}/>}/>     
-        
+        <Route path='/transfers' element={<DeporWdraw></DeporWdraw>}/>
+
         <Route path='/empregister' element={<EmpRegister onEmpLogin = {handleEmpLogin}/>}/> 
         <Route path='/emplogin' element={<Emplogin onEmpLogin = {handleEmpLogin}/>}/>
         <Route path='/emp' element={<EmpHome isEmpLoggedIn={isEmpLoggedIn} empid = {empid}/>}/>

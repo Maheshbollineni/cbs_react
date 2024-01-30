@@ -8,14 +8,11 @@ export default function ManageAccounts(props) {
   const [accounts,setAccounts]=useState([]);
 
   useEffect(()=>{
-      const response= fetch("http://localhost:8080/getAccount",{
-      method:"post",
+      const response= fetch("http://localhost:8080/getAll",{
+      method:"get",
       headers: {
         'Content-Type': 'application/json'
-      },
-      body:JSON.stringify({
-        custid:props.custid
-      })
+      }
     })
     .then((response)=>{console.log(response); return response.json();})
     .then((data)=>{console.log("manage"+data); setAccounts(data);})
