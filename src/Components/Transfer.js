@@ -67,6 +67,7 @@ export default function Transfer() {
         <br></br>
         
       </form>
+      <p>{res}</p>
     </div>
   )
 }

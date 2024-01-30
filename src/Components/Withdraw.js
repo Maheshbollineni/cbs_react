@@ -5,7 +5,7 @@ export default function Withdraw() {
     const[res,setRes]=useState('');
     const generate=async()=>{
         const response =await fetch('http://localhost:8080/withdraw',{
-            method:"patch",
+            method:"post",
             headers: {
               'Content-Type': 'application/json'
             },
@@ -20,13 +20,31 @@ export default function Withdraw() {
   return (
     <div>
         <h3>Withdraw money</h3>
-      <label>Amount</label>
-      <input type='number' value={amt} onChange={(e)=>{setAmt(e.target.value)}}></input>
-      <br></br>
-      <label >Account No. </label>
-      <input type="number" value={acc} onChange={(e)=>{setAcc(e.target.value)}}></input>
-      <br></br>
-      <button onClick={generate}>Withdraw</button>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+              <label >Account No. </label>
+              </td>
+              <td>
+              <input type="number" value={acc} onChange={(e)=>{setAcc(e.target.value)}}></input>
+              </td>
+            </tr>
+            <tr>
+              <td>
+              <label>Amount</label>
+              </td>
+              <td>
+              <input type='number' value={amt} onChange={(e)=>{setAmt(e.target.value)}}></input>
+              </td>
+            </tr>
+            <tr>
+              <td>
+              <button onClick={generate}>Withdraw</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       <p>{res}</p>
     </div>
   )

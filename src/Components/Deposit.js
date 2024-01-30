@@ -7,7 +7,7 @@ export default function Deposit() {
     const[res,setRes]=useState('');
     const generate=async()=>{
         const response =await fetch('http://localhost:8080/deposit',{
-            method:"patch",
+            method:"post",
             headers: {
               'Content-Type': 'application/json'
             },
@@ -22,13 +22,33 @@ export default function Deposit() {
   return (
     <div>
         <h3>Deposit Money</h3>
-      <label>Amount</label>
-      <input type='number' value={amt} onChange={(e)=>{setAmt(e.target.value)}}></input>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+              <label >Account No. </label>
+              </td>
+              <td>
+              <input type="number" value={acc} onChange={(e)=>{setAcc(e.target.value)}}></input>
+              </td>
+            </tr>
+            <tr>
+              <td>
+              <label>Amount</label>
+              </td>
+              <td>
+              <input type='number' value={amt} onChange={(e)=>{setAmt(e.target.value)}}></input>
+              </td>
+            </tr>
+            <tr>
+              <td>
+              <button onClick={generate}>Deposit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <br></br>
-      <label >Account No. </label>
-      <input type="number" value={acc} onChange={(e)=>{setAcc(e.target.value)}}></input>
-      <br></br>
-      <button onClick={generate}>Deposit</button>
+        <br></br>      
       <p>{res}</p>
     </div>
   )
