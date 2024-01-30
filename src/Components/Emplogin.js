@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/login.css';
 
@@ -7,6 +7,11 @@ export default function Emplogin({onEmpLogin}) {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate=useNavigate();
+    const [valid,setvalid] = useState(null);
+    useEffect(()=>{
+      routeLogin();
+    },[valid]);
+
     const handleSubmit = async(e) => {
       e.preventDefault();
       const response=await fetch('http://localhost:8080/emplogin',{
@@ -18,12 +23,26 @@ export default function Emplogin({onEmpLogin}) {
           empid:username,
           password:password
         })
-      }).then((response)=>{response.json()})
-      .then((data)=>{console.log(data)})
-      .catch((error)=>{setError(error)})
+      });
       console.log(username+" login")
-      onEmpLogin(username);
-      navigate("/emp");
+      const val = await response.json().then((data)=> {return data});
+      setvalid(val)
+      console.log("valid: ",valid)
+      console.log(val)
+    };
+
+    const routeLogin = ()=>{
+      console.log("inside valid: ",valid)
+      if(valid){
+        onEmpLogin(username);
+        navigate("/emp");
+        
+      }
+      else{
+        if(valid!=null){
+          setError("Invalid Credentials")
+        }
+      }
     };
   
     return (
@@ -36,6 +55,7 @@ export default function Emplogin({onEmpLogin}) {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              required
             />
           </div>
           <div>
@@ -45,6 +65,7 @@ export default function Emplogin({onEmpLogin}) {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
           <button type="submit">Login</button>

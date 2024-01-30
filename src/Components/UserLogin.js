@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../css/login.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,10 +8,14 @@ export default function UserLogin({onLogin}) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const navigate=useNavigate()
+    const navigate=useNavigate();
+    const [valid,setvalid] = useState(null);
+    useEffect(()=>{
+      routeLogin();
+    },[valid]);
     const handleSubmit = async(e) => {
       e.preventDefault();
-      const response=await fetch('http://localhost:8080/login',{
+      const response = await fetch('http://localhost:8080/login',{
         method: "post",
         headers: {
           'Content-Type': 'application/json'
@@ -20,12 +24,26 @@ export default function UserLogin({onLogin}) {
           custid:username,
           password:password
         })
-      }).then((response)=>{response.json()})
-      .then((data)=>{console.log(data)})
-      .catch((error)=>{setError(error)})
+      })
       console.log(username+"login")
-      onLogin(username);
-      navigate("/");
+      const val = await response.json().then((data)=> {return data});
+      setvalid(val)
+      console.log("valid: ",valid)
+      console.log(val)
+    };
+
+    const routeLogin = ()=>{
+      console.log("inside valid: ",valid)
+      if(valid){
+        onLogin(username);
+        navigate("/");
+        
+      }
+      else{
+        if(valid!=null){
+          setError("Invalid Credentials")
+        }
+      }
     };
   
     return (
@@ -38,6 +56,7 @@ export default function UserLogin({onLogin}) {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              required
             />
           </div>
           <div>
@@ -46,7 +65,7 @@ export default function UserLogin({onLogin}) {
             className='password'
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)} required
             />
           </div>
           <button type="submit">Login</button>
