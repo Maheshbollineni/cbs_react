@@ -1,9 +1,24 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom/dist';
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import '../css/TransactionHistory.css';
 import EmpNavBar from './EmpNavBar';
 export default function Monthlystatement() {
+
+  const [accounts,setAccounts]=useState([]);
+
+  useEffect(()=>{
+      const response= fetch("http://localhost:8080/getAll",{
+      method:"get",
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response)=>{console.log(response); return response.json();})
+    .then((data)=>{console.log("account list "+data); setAccounts(data);})
+    .catch((error)=>{console.log(error)})
+  },[])
+
 
   const [accno,setAccno]=useState();
   const [mn,setmn]=useState(1);
@@ -36,6 +51,8 @@ export default function Monthlystatement() {
   const submitMonth = ()=>{
     getTransactions();
   }
+
+  console.log(accounts)
   return (
     <div >
       <EmpNavBar></EmpNavBar>
@@ -48,7 +65,14 @@ export default function Monthlystatement() {
             < label for="accno">Account No. : </label>
             </td>
             <td>
-              <input type="number" className="accno" value={accno} onChange={handlechange} />
+              {/* <input type="number" className="accno" value={accno} onChange={handlechange} /> */}
+              <select className='accno' value={accno} onChange={handlechange}>{
+                accounts.map((data)=>
+                  <option value={data}>
+                    {data}
+                </option>)
+}
+             </select>
             </td>
           </tr>
           <tr>
